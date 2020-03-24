@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ZuluPlus</title>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <%= yield :meta_tags %>
+
+  <%= stylesheet_link_tag    'standard_theme', media: 'all' %>
+  <!-- font -->
+  <link href='//fonts.googleapis.com/css?family=Francois+One' rel='stylesheet' type='text/css'>
+  <!-- //font -->
+  <%= yield :stylesheets %>
+</head>
+<body>
+  <!-- header -->
+  <%= render partial: 'themes/standard/header' %>
+  <%= render partial: 'themes/standard/flash' %>
+  <!-- //header -->
+
+  <%= yield %>
+
+  <!-- footer -->
+  <%= render partial: 'themes/standard/footer' %>
+  <!-- //footer -->
+
+  <!-- ************************************************************************************************ -->
+  <!-- Javascripts -->
+  <!-- ************************************************************************************************ -->
+  <%= javascript_include_tag 'standard_theme' %>
+  <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+  <script type="text/javascript">
+    jQuery(document).ready(function($) {
+      $(".scroll").click(function(event){   
+        event.preventDefault();
+        $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+      });
+    });
+  </script>
+  <script>
+    new WOW().init();
+  </script>
+
+  <script>
+        // You can also use "$(window).load(function() {"
+          $(function () {
+        // Slideshow 4
+        $("#slider3").responsiveSlides({
+          auto: true,
+          pager: true,
+          nav: true,
+          speed: 500,
+          namespace: "callbacks",
+          before: function () {
+            $('.events').append("<li>before event fired.</li>");
+          },
+          after: function () {
+            $('.events').append("<li>after event fired.</li>");
+          }
+        });        
+      });
+  </script>
+
+  <script>
+        // You can also use "$(window).load(function() {"
+          $(function () {
+        // Slideshow 4
+        $("#slider1").responsiveSlides({
+          auto: true,
+          pager: true,
+          nav: false,
+          speed: 500,
+          namespace: "callbacks",
+          before: function () {
+            $('.events').append("<li>before event fired.</li>");
+          },
+          after: function () {
+            $('.events').append("<li>after event fired.</li>");
+          }
+        });        
+      });
+  </script>
+  <%= yield :javascripts %>
+  <%= render 'enquiries/enquiry_modal' %>
+  <%= yield :modals %>
+</body>
+</html>

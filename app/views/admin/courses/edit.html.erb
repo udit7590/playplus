@@ -1,0 +1,14 @@
+<div class="login">
+  <div class="container">
+    <div class="login-body">
+      <div class="login-heading">
+        <h1>Editing Course</h1>
+      </div>
+
+      <%= render partial: 'form', locals: { url: admin_course_path(@course), method: :patch } %>
+      <%= link_to 'Show Course', admin_course_path(@course) %> |
+      <%= link_to 'Back To Courses', admin_courses_path %>
+    </div>
+  </div>
+</div>
+

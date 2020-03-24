@@ -1,0 +1,28 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+
+test:
+  <<: *default
+  database: playplus_test
+
+development:
+  <<: *default
+  database: playplus_development
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: zuluplus
+  username: zuluplus
+  password: tj54#udit7590
+  host: zuluplus-prod.chp37gfqm1kf.us-east-2.rds.amazonaws.com
+  port: 5432
+
+staging:
+  <<: *default
+  database: playplus_staging

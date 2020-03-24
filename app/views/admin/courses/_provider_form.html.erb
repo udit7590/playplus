@@ -1,0 +1,54 @@
+<%= f.fields_for :course_providers do |provider_form| %>
+
+  <%= provider_form.label :company %>
+  <%= provider_form.text_field :company, placeholder: 'company' %>
+
+  <%= provider_form.label :firstname %>
+  <%= provider_form.text_field :firstname, placeholder: 'firstname' %>
+
+  <%= provider_form.label :lastname %>
+  <%= provider_form.text_field :lastname, placeholder: 'lastname' %>
+
+  <%= provider_form.label :phone %>
+  <%= provider_form.text_field :phone, placeholder: 'phone' %>
+
+  <%= provider_form.label :locality %>
+  <%= provider_form.text_field :locality, placeholder: 'locality' %>
+
+  <%= provider_form.label :address1 %>
+  <%= provider_form.text_field :address1, placeholder: 'address1' %>
+
+  <%= provider_form.label :address2 %>
+  <%= provider_form.text_field :address2, placeholder: 'address2' %>
+
+  <%= provider_form.label :city %>
+  <%= provider_form.text_field :city, placeholder: 'City' %>
+
+  <%= provider_form.label :zipcode %>
+  <%= provider_form.text_field :zipcode, placeholder: 'zipcode' %>
+
+  <%= provider_form.label :nearby %>
+  <%= provider_form.text_field :nearby, placeholder: 'nearby' %>
+
+  <%= provider_form.label :state %>
+  <%= provider_form.text_field :state, placeholder: 'State' %>
+
+  <%= provider_form.label :country %>
+  <%= provider_form.text_field :country, value: 'India', readonly: true %>
+
+  <!-- TODO: Lets create a separate form where we can upload images easily instead of writing js -->
+  <%= f.label :location_image_hashed_id, 'Course related location image' %>
+  <p class="alert-text">TODO</p>
+  <% render partial: 'admin/shared/file_block', locals: { f: f, block_name: 'course[location_image_hashed_id]' } %>
+  <%= f.label :company_image_hashed_id, 'Company image' %>
+  <p class="alert-text">TODO</p>
+
+  <%= provider_form.label :active %>
+  <%= provider_form.check_box :active %>
+  <p class="alert-text">This will show/hide the provider from the course listing</p>
+
+  <%= render partial: 'level_form', locals: { provider_form: provider_form } %>
+
+  <%= provider_form.link_to_remove "Remove this course provider" %>
+<% end %>
+<p><%= f.link_to_add "Add a course provider", :course_providers %></p>

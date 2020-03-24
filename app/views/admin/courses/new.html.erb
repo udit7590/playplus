@@ -1,0 +1,15 @@
+<div class="login">
+  <div class="container">
+    <div class="login-body">
+      <div class="login-heading">
+        <h1>New Course</h1>
+      </div>
+
+      <%= render partial: 'form', locals: { url: admin_courses_path, method: :post } %>
+      <div class="signup-text">
+        <%= link_to 'Back to courses index', admin_courses_path %>
+      </div>
+    </div>
+  </div>
+</div>
+

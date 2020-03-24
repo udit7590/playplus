@@ -1,0 +1,33 @@
+<!-- login -->
+<div class="login">
+  <div class="container">
+    <div class="login-body">
+      <div class="login-heading">
+        <h1>Forgot Password?</h1>
+      </div>
+      <div class="login-info">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= devise_error_messages! %>
+          <%= f.email_field :email, autofocus: true, placeholder: 'Email', required: true, class: 'user' %>
+
+          <%= f.submit "Send me reset password instructions" %>
+
+          <div class="signup-text">
+            <%- if controller_name != 'sessions' %>
+              <%= link_to "Remember your password? Login", new_session_path(resource_name) %><br />
+            <% end -%>
+
+            <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+              <%= link_to "Don't have an account? Create one now", new_registration_path(resource_name) %><br />
+            <% end -%>
+
+            <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+              <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+            <% end -%>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- //login -->

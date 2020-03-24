@@ -1,0 +1,98 @@
+<!-- banner -->
+<%= render partial: 'themes/standard/banner' %>
+<!-- //banner -->
+
+<!-- banner-bottom -->
+<%= render partial: 'themes/standard/banner_bottom' %>
+<!-- //banner-bottom -->
+
+<!-- information -->
+<div class="information">
+  <!-- <div class="container">
+    <div class="information-heading">
+      <h3 class="wow fadeInDown animated" data-wow-delay=".5s">How to Enroll?</h3>
+      <p class="wow fadeInUp animated" data-wow-delay=".5s">It's really simple!</p>
+    </div>
+
+    <div class="information-grids">
+      <div class="col-md-4 information-grid wow fadeInLeft animated" data-wow-delay=".5s">
+        <div class="information-info">
+          <div class="information-grid-img">
+            <%= image_tag "process/find.png", size: '286x286' %>
+          </div>
+          <div class="information-grid-info">
+            <h4>Find Your Course </h4>
+            <p>Find the course you are looking for from our list of available ones</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 information-grid wow fadeInUp animated" data-wow-delay=".5s">
+        <div class="information-info">
+          <div class="information-grid-info">
+            <h4>Select batch &amp; location</h4>
+            <p>You can select the location and batch timings for the course in the enrollment form</p>
+          </div>
+          <div class="information-grid-img">
+            <%= image_tag "process/locate.png", size: '316x316' %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 information-grid wow fadeInRight animated" data-wow-delay=".5s">
+        <div class="information-info">
+          <div class="information-grid-img">
+            <%= image_tag "process/submit.png", size: '316x316' %>
+          </div>
+          <div class="information-grid-info">
+            <h4>Enroll</h4>
+            <p>Submit your enrollment form.</p>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+  </div> -->
+</div>
+<!-- //information -->
+
+<!-- popular -->
+<div class="popular">
+  <div class="container">
+    <div class="popular-heading information-heading">
+      <h3 class="wow fadeInDown animated" data-wow-delay=".5s">Popular Courses</h3>
+      <p class="wow fadeInUp animated" data-wow-delay=".5s">Enroll for the most popular courses on our site and make sure you can flaunt your skills soon enough.</p>
+    </div>
+    <div class="popular-slide">
+      <div  id="top" class="callbacks_container-wrap">
+        <ul class="rslides" id="slider1">
+          <% @popular_courses.each do |course| %>
+            <li>
+              <%= link_to course_path(course), class: 'popular-courses' do %>
+                <div class="popular-slide-info wow bounceIn animated" data-wow-delay=".5s">
+                  <h4><%= course.name %></h4>
+                  <p><%= course.description %></p>
+                  <p></p>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="popular-grids">
+      <div class="col-md-4 popular-grid wow fadeInLeft animated" data-wow-delay=".5s">
+        <!-- <h5>Nullam convallis sagittis</h5>
+        <p>Donec malesuada ultricies metus ac vehicula. Nullam convallis sagittis tellus ut dictum. Proin risus lacus, sollicitudin sit amet ante ac, dapibus convallis ipsum.</p> -->
+      </div>
+      <div class="col-md-4 popular-grid wow fadeInUp animated" data-wow-delay=".5s">
+        <!-- <h5>Proin risus lacus</h5>
+        <p>Donec malesuada ultricies metus ac vehicula. Nullam convallis sagittis tellus ut dictum. Proin risus lacus, sollicitudin sit amet ante ac, dapibus convallis ipsum.</p> -->
+      </div>
+      <div class="col-md-4 popular-grid wow fadeInRight animated" data-wow-delay=".5s">
+        <!-- <h5>Sollicitudin sit amet ante</h5>
+        <p>Donec malesuada ultricies metus ac vehicula. Nullam convallis sagittis tellus ut dictum. Proin risus lacus, sollicitudin sit amet ante ac, dapibus convallis ipsum.</p> -->
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+  </div>
+</div>
+<!-- //popular -->

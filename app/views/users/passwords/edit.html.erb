@@ -1,0 +1,26 @@
+<!-- change password -->
+<div class="login">
+  <div class="container">
+    <div class="login-body">
+      <div class="login-heading">
+        <h1>Change your password</h1>
+      </div>
+      <div class="login-info">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+          <%= devise_error_messages! %>
+          <%= f.hidden_field :reset_password_token %>
+
+          <h6><% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+          <% end %></h6>
+          <%= f.password_field :password, autocomplete: "off", placeholder: 'New Password', class: 'lock' %>
+
+          <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Confirm Password', class: 'lock' %>
+
+          <%= f.submit "Change my password" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- //change password -->

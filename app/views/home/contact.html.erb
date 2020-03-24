@@ -1,0 +1,65 @@
+<!-- contact -->
+  <div class="contact">
+    <div class="container">
+      <div class="contact-heading">
+          <h2 class="wow fadeInDown animated" data-wow-delay=".5s">Contact ZuluPlus</h2>
+          <p class="wow fadeInUp animated" data-wow-delay=".5s">Please feel free to reach to us for any queries and information. We would love to hear your suggestions to add new courses as well.</p>
+        </div>
+      <div class="map wow fadeInUp animated" data-wow-delay=".5s">
+        <h4>How to find us :</h4>
+        <iframe
+          frameborder="0" style="border:0"
+          src="https://www.google.com/maps/embed/v1/view?key=AIzaSyDJteFymFJ_XBHw7oFJBWkuOniOAxb0yfU
+            &center=28.6909077,77.1571502&zoom=15" allowfullscreen>
+        </iframe>
+        <!-- <iframe
+          frameborder="0" style="border:0"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDJteFymFJ_XBHw7oFJBWkuOniOAxb0yfU
+            &q=New+Delhi,India" allowfullscreen>
+        </iframe> -->
+      </div>
+      
+      <div class="address">
+        <div class="col-md-4 address-grids wow fadeInLeft animated" data-wow-delay=".5s">
+          <h4>Address :</h4>
+          <ul>
+            <li><p>527 Finchley Rd, UK<br>
+                London NW3 7BG,<br>
+                UK</p>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4 address-grids wow fadeInUp animated" data-wow-delay=".5s">
+          <h4>Phone :</h4>
+          <p>+91 9999075570</p>
+          <p>+44 7794422235</p>
+        </div>
+        <div class="col-md-4 address-grids wow fadeInRight animated" data-wow-delay=".5s">
+          <h4>Email :</h4>
+          <p><a href="mailto:zuluplus2018@gmail.com">zuluplus2018@gmail.com</a></p>
+        </div>
+        <div class="clearfix"> </div>
+      </div>
+      <div class="contact-infom wow fadeInUp animated" data-wow-delay=".5s">
+        <h4>Miscellaneous Information:</h4>
+        <p>ZuluPlus was established in March 2018 by a team of passionate people with an aim to help you find your favorite courses and activities easily and enable you to enroll in them without hassles.</p>
+      </div>  
+      <div class="contact-form wow fadeInUp animated" data-wow-delay=".5s">
+        <h4>Contact Form</h4>
+        <%= form_for(Enquiry.new, url: enquiries_path, method: :post) do |f| %>
+          <% if current_user.present? %>
+            <%= f.hidden_field :from_name, value: current_user.name, required: true %>
+            <%= f.hidden_field :from_email, value: current_user.email, required: true %>
+            <%= f.hidden_field :from_phone, value: current_user.phone_number %>
+          <% else %>
+            <%= f.text_field :from_name, placeholder: "Name", required: true %>
+            <%= f.email_field :from_email, placeholder: "Email", required: true %>
+            <%= f.number_field :from_phone, placeholder: "Phone" %>
+          <% end %>
+          <%= f.text_area :message, placeholder: "Message", required: true %>
+          <button class="btn1 btn-1 btn-1b">Submit</button>
+        <% end %>
+      </div>  
+    </div>
+  </div>
+<!-- //contact -->

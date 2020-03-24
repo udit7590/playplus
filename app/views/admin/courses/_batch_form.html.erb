@@ -1,0 +1,40 @@
+<%= level_form.fields_for :course_batches do |batch_form| %>
+  <%= batch_form.label :capacity %>
+  <%= batch_form.number_field :capacity, placeholder: 'Capacity (Max number of intakes)' %>
+
+  <%= batch_form.label :instructor %>
+  <%= batch_form.text_field :instructor, placeholder: 'instructor' %>
+
+  <%= batch_form.label :description %>
+  <%= batch_form.text_area :description, placeholder: 'Description' %>
+
+  <%= batch_form.hidden_field :type, value: 'variable' %>
+
+  <!-- <h3>For Fixed Batch Type</h3> -->
+  <!-- NOTE: Hiding fixed batch type for now -->
+  <% batch_form.label :start_day %>
+  <% batch_form.number_field :start_day, placeholder: 'start_day' %>
+
+  <% batch_form.label :start_month %>
+  <% batch_form.number_field :start_month, placeholder: 'start_month' %>
+
+  <% batch_form.label :start_week %>
+  <% batch_form.number_field :start_week, placeholder: 'start_week' %>
+  <!-- /Hiding fixed batch type for now -->
+
+  <h3>For Varied Batch Type</h3>
+  <%= batch_form.label :start_date %>
+  <%= batch_form.text_field :start_date, placeholder: 'start_date (mm-dd-yyyy)' %>
+
+  <%= batch_form.label :end_date %>
+  <%= batch_form.text_field :end_date, placeholder: 'end_date (mm-dd-yyyy)' %>
+
+  <%= batch_form.label :start_time1 %>
+  <%= batch_form.text_field :start_time1, placeholder: 'start_time1 (hh:mm)' %>
+
+  <%= batch_form.label :end_time1 %>
+  <%= batch_form.text_field :end_time1, placeholder: 'end_time1 (hh:mm)' %>
+
+  <%= batch_form.link_to_remove "Remove this course batch" %>
+<% end %>
+<p><%= level_form.link_to_add "Add a course batch", :course_batches %></p>

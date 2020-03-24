@@ -1,0 +1,49 @@
+<!-- Course Starts -->
+<div class="blog">
+  <!-- container -->
+  <div class="container">
+    <div class="blog-heading">
+      <h2 class="wow fadeInDown animated" data-wow-delay=".5s"><%= @course.name %></h2>
+      <p class="wow fadeInUp animated" data-wow-delay=".5s"><%= @course.description %></p>
+    </div>
+    <div class="blog-top-grids">
+      <!-- Course Info -->
+      <div class="col-md-8 blog-top-left-grid">
+        <div class="left-blog">
+          <div class="blog-left">
+            <div class="blog-left-left wow fadeInUp animated" data-wow-delay=".5s">
+              <!-- TODO: This p tag can be used to display info like like, num of enrolled, share  -->
+              <!-- <p>Posted By <a href="#">Admin</a> &nbsp;&nbsp; on June 2, 2016 &nbsp;&nbsp; <a href="#">Comments (10)</a></p> -->
+              <!-- TODO: Need to make it responsive -->
+              <%= cl_image_tag(@course.main_image_hashed_id, width: 720, height: 480, crop: :fill) %>
+            </div>
+            <div class="blog-left-right wow fadeInUp animated" data-wow-delay=".5s">
+              <% if @course.instructions.present? %>
+                <h3>Instructions</h3>
+                <p><%= @course.instructions %></p>
+              <% end %>
+              <% if @course.prerequisites.present? %>
+                <h3>Pre-requisites</h3>
+                <p><%= @course.prerequisites %></p>
+              <% end %>
+              <% if @course.inclusions.present? %>
+                <h3>Inclusions</h3>
+                <p><%= @course.inclusions %></p>
+              <% end %>
+            </div>
+            <div class="clearfix"> </div>
+          </div>
+        </div>
+      </div>
+      <!-- Course Info Ends -->
+
+      <!-- Right Sidebar -->
+      <%= render partial: 'right_sidebar', locals: { course: @course } %>
+      <!-- Right Sidebar Ends -->
+
+      <div class="clearfix"> </div>
+    </div>
+  </div>
+  <!-- //container -->
+</div>
+<!-- /Course -->

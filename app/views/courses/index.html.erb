@@ -1,0 +1,74 @@
+<!-- gallery -->
+  <div class="gallery">
+    <div class="container">
+      <% if @courses.blank? %>
+        <center>
+          <div class="jumbotron courses-blank">
+            <% if @search %>
+              <h2>No courses found for search: <span class="site-green-text"><%= params[:q] %></span></h2>
+              <%= form_tag search_courses_path, method: :get do %>
+                <%= text_field_tag :q, '', placeholder: 'Search for courses again', id: 'courses_search' %>
+                <!-- <input type="text" placeholder="Search Course Keywords" name="q" id="courses_search" /> -->
+                <%= submit_tag 'Search', name: nil, class: 'hidden' %>
+              <% end %>
+            <% else %>
+              <h1>We are coming soon with the courses you are looking for...</h1>
+            <% end %>
+          </div>
+          <!-- <img src="/assets/standard/images/g2.jpg" alt="" /> -->
+        </center>
+      <% else %>
+        <div class="gallery-heading">
+          <% if @search %>
+            <h2>Courses for search: <span class="site-green-text"><%= params[:q] %></span></h2>
+            <%= form_tag search_courses_path, method: :get do %>
+              <%= text_field_tag :q, '', placeholder: 'Search for courses again', id: 'courses_search' %>
+              <!-- <input type="text" placeholder="Search Course Keywords" name="q" id="courses_search" /> -->
+              <%= submit_tag 'Search', name: nil, class: 'hidden' %>
+            <% end %>
+          <% else %>
+            <h2>Our Courses</h2>
+            <p>Find the course you like from our growing list. Don't find what you are looking for? Write to us and we'll do our best to find it for you!</p>
+          <% end %>
+        </div>
+      <% end %>
+      
+      <div class="gallery-grids">
+        <!-- LISTING START -->
+        <% @courses.each do |course| %>
+          <div class="col-md-4 gallery-grid wow fadeInUp animated" data-wow-delay=".5s">
+            <div class="grid">
+              <figure class="effect-apollo">
+                <%= link_to course_path(course), class: 'example-image-link' do %>
+                  <%= cl_image_tag(course.main_image_hashed_id, width: 350, height: 230, crop: :fill) %>
+                  <figcaption>
+                    <h3 <%= tooltip(course.name) %>><%= course.name.truncate(TRUNCATATE[:courses][:title]) %></h3>
+                    <p><%= course.description.truncate(TRUNCATATE[:courses][:description]) %></p>
+                  </figcaption>
+                <% end %>
+              </figure>
+            </div>
+          </div>
+        <% end %>
+        <!-- <div class="col-md-4 gallery-grid wow fadeInUp animated" data-wow-delay=".5s">
+          <div class="grid">
+            <figure class="effect-apollo">
+              <a class="example-image-link" href="/assets/standard/images/g2.jpg" data-lightbox="example-set" data-title="">
+                <img src="/assets/standard/images/g2.jpg" alt="" />
+                <figcaption>
+                  <h3>Hawaii</h3>
+                  <p>Proin vitae luctus dui, sit amet ultricies leo</p>
+                </figcaption> 
+              </a>
+            </figure>
+          </div>
+        </div>
+        -->
+        <!-- LISTING END -->
+        <div class="clearfix"> </div>
+        <!-- TODO: Using javascript_include_tag -->
+        <script src="/assets/standard/js/lightbox-plus-jquery.min.js"> </script>
+      </div>
+    </div>
+  </div>
+<!-- //gallery -->

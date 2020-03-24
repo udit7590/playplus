@@ -1,0 +1,127 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag 'enrollment/sidebar_form' %>
+<% end %>
+
+<div class="col-md-4 blog-top-right-grid">
+  <% if current_user.present? %>
+
+    <%= form_for(@enrollment, url: enrollments_path, method: :post, html: { class: 'enrollment-sidebar-form js-enrollment-sidebar-form' }) do |f| %>
+      <div class="Categories wow fadeInUp animated" data-wow-delay=".5s">
+        <center><h3>Enroll Now</h3></center>
+      </div>
+
+      <!-- Location/ Course Providers -->
+      <p>Location</p>
+      <div class="Categories wow fadeInUp animated" data-wow-delay=".5s">
+        <%= f.select :course_provider_id, @course.course_providers_list, { prompt: 'Select Location' }, class: 'select-sidebar js-location-select', required: true %>
+      </div>
+      <br />
+
+      <!-- Levels -->
+      <p>Level</p>
+      <div class="Categories wow fadeInUp animated" data-wow-delay=".5s">
+        <%= f.select :course_level_id, [], { prompt: 'Select Level' }, class: 'select-sidebar js-course-level-select', required: true %>
+      </div>
+      <br />
+
+      <!-- Batches -->
+      <p>Batch</p>
+      <div class="Categories wow fadeInUp animated" data-wow-delay=".5s">
+        <%= f.select :course_batch_id, [], { prompt: 'Select Batch' }, class: 'select-sidebar js-course-batch-select', required: true %>
+      </div>
+      <br />
+
+      <!-- TODO: Start Date : Hidden for now -->
+      <!-- <div class="Categories wow fadeInUp animated" data-wow-delay=".5s">
+        <% f.text_field :start_date, placeholder: 'Starts After' %>
+      </div>
+      <br /> -->
+
+      <!-- TODO: End Date : Hidden for now -->
+      <!-- <div class="Categories wow fadeInUp animated" data-wow-delay=".5s">
+        <p>Ends before</p>
+        <% f.date_select :end_date %>
+      </div>
+      <br /> -->
+
+      <!-- Pricing -->
+      <div class="Categories wow fadeInUp animated" data-wow-delay=".5s">
+        <table class="table table-hover js-course-details">
+          <thead>
+            <th colspan="2">Course Details</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Duration</td>
+              <td class="js-course-duration">Choose first</td>
+            </tr>
+            <tr>
+              <td>Total Sessions</td>
+              <td class="js-course-total-sessions">Choose first</td>
+            </tr>
+            <tr>
+              <td>Each Session Duration</td>
+              <td class="js-course-session-duration">Choose first</td>
+            </tr>
+            <tr>
+              <td>Starting From</td>
+              <td class="js-course-starting-from">Choose first</td>
+            </tr>
+            <tr>
+              <td>Price</td>
+              <td class="js-course-price">NA</td>
+            </tr>
+            <tr>
+              <td>Taxes</td>
+              <td class="js-course-taxes">NA</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Total</th>
+              <th class="js-course-total-price">NA</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- Submit -->
+      <div class="Categories wow fadeInUp animated" data-wow-delay=".5s">
+        <div class="login-info">
+          <%= f.submit 'Send Enquiry for Enrollment', class: 'js-course-enroll-btn' %>
+        </div>
+      </div>
+
+    <% end %>
+  <% else %>
+    <div class='enrollment-sidebar-form'>
+      <div class="Categories wow fadeInUp animated" data-wow-delay=".5s">
+        <center><h3>Enroll Now</h3></center>
+      </div>
+
+      <div class="Categories wow fadeInUp animated" data-wow-delay=".5s">
+        <div class="login-info">
+          <%= link_to new_session_path(:user, redirect: true) do %>
+            <button class="js-course-enroll-btn">Login to Enroll Now</button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- TODO: Can be used to show reviews -->
+  <!-- <div class="comments">
+    <h3 class="wow fadeInUp animated" data-wow-delay=".5s">Recent Comments</h3>
+    <div class="comments-text wow fadeInUp animated" data-wow-delay=".5s">
+      <div class="col-md-3 comments-left">
+        <img src="images/t1.jpg" alt="" />
+      </div>
+      <div class="col-md-9 comments-right">
+        <h5>Admin</h5>
+        <a href="#">Phasellus sem leointerdum risus</a> 
+        <p>March 16,2016 6:09:pm</p>
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+  </div> -->
+</div>

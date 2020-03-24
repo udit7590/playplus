@@ -1,0 +1,43 @@
+<div class="banner">
+  <div class="slider">
+    <h2 class="wow shake animated" data-wow-delay=".5s">Find the Course you are looking for</h2>
+    <div class="border"></div>
+    <div  id="top" class="callbacks_container-wrap">
+      <ul class="rslides" id="slider3">
+        <li>
+          <div class="slider-info">
+            <%= form_tag search_courses_path, method: :get do %>
+              <%= text_field_tag :q, '', placeholder: 'Search Course Keywords', id: 'courses_search' %>
+              <!-- <input type="text" placeholder="Search Course Keywords" name="q" id="courses_search" /> -->
+              <%= submit_tag 'Search', name: nil, class: 'hidden' %>
+            <% end %>
+            <br /><br />
+            <h3 class="wow fadeInRight animated" data-wow-delay=".5s">Or</h3>
+            <!-- <p class="wow fadeInLeft animated" data-wow-delay=".5s">Go to the course listing page and discover what we have to offer. If you can't find your favorite course, feel free to contact us as well.</p> -->
+            <div class="more-button equal-to-search-width wow fadeInRight animated" data-wow-delay=".5s" style="margin-top: 25px">
+              <%= link_to 'View All Courses', courses_path, style: 'width: 30%' %>
+            </div>
+          </div>
+        </li>
+        <!-- <li>
+          <div class="slider-info">
+            <h3>Consectetur adipiscing elit</h3>
+            <p>Quisque nisl risus, egestas in convallis vitae, fringilla cursus magna</p>
+            <div class="more-button">
+              <a href="single.html">Read More </a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="slider-info">
+            <h3>Proin eget consequat ante </h3>
+            <p> Suspendisse bibendum dictum metus, at finibus elit dignissim nec  </p>
+            <div class="more-button">
+              <a href="single.html">Click Here  </a>
+            </div>
+          </div>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</div>

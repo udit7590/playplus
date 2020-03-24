@@ -1,0 +1,49 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag("cloudinary_all") %>
+  <%= cloudinary_js_config %>
+  <%= javascript_include_tag("admin/courses/form") %>
+<% end %>
+
+<div class="login-info">
+  <%= nested_form_for(@course, url: url, method: method, html: { class: 'courses-form' }) do |f| %>
+    <% if @course.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+        <ul>
+        <% @course.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: 'Course name', required: true %>
+
+    <%= f.label :description %>
+    <%= f.text_area :description, placeholder: 'Description' %>
+
+    <%= f.label :instructions %>
+    <%= f.text_area :instructions, placeholder: 'Instructions' %>
+
+    <%= f.label :prerequisites %>
+    <%= f.text_area :prerequisites, placeholder: 'Pre-requisites' %>
+
+    <%= f.label :inclusions %>
+    <%= f.text_area :inclusions, placeholder: 'Inclusions' %>
+
+    <%= f.label :main_image_hashed_id, 'Main course image' %>
+    <%= render partial: 'admin/shared/file_block', locals: { f: f, block_name: 'course[main_image_hashed_id]' } %>
+
+    <hr /><hr /><hr />
+    <% if @course.persisted? %>
+      <%= render partial: 'provider_form', locals: { f: f } %>
+    <% else %>
+      <p class="alert-text">Create the course first to enter further details. You will be redirected to same form after creation to enter further details.</p>
+    <% end %>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

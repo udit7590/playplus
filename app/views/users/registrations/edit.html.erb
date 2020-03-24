@@ -1,0 +1,26 @@
+<!-- edit registration -->
+<div class="login">
+  <div class="container">
+    <div class="login-body">
+      <div class="login-heading">
+        <h1>Edit My Password</h1>
+      </div>
+      <div class="login-info">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= devise_error_messages! %>
+
+          <%= f.password_field :password, autocomplete: "off", placeholder: "New Password", class: 'lock' %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Confirm Password', class: 'lock' %>
+          <%= f.password_field :current_password, autocomplete: "off", placeholder: 'Current Password', class: 'lock' %>
+          <div class="forgot-top-grids">
+
+          <%= f.submit "Change Password" %>
+          <div class="signup-text">
+            <%= link_to "Back to preferences", edit_user_preferences_path(current_user) %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- //edit registration -->

@@ -1,0 +1,52 @@
+<%= provider_form.fields_for :course_levels do |level_form| %>
+  <%= level_form.label :capacity %>
+  <%= level_form.number_field :capacity, placeholder: 'Capacity (Max number of intakes)' %>
+
+  <%= level_form.label :level, 'Level Number' %>
+  <%= level_form.number_field :level, placeholder: 'Course level (0 = free demo session)' %>
+
+  <%= level_form.label :level_name %>
+  <%= level_form.text_field :level_name, placeholder: 'Level Name. Eg. Beginner/Demo/Expert' %>
+
+  <%= level_form.label :price %>
+  <%= level_form.number_field :price, placeholder: 'Course Fees' %>
+
+  <%= level_form.label :coach_name %>
+  <%= level_form.text_field :coach_name, placeholder: 'Coach Name' %>
+
+  <%= level_form.label :description %>
+  <%= level_form.text_area :description, placeholder: 'Description' %>
+
+  <%= level_form.label :instructions %>
+  <%= level_form.text_area :instructions, placeholder: 'Instructions' %>
+
+  <%= level_form.label :prerequisites %>
+  <%= level_form.text_area :prerequisites, placeholder: 'Pre-requisites' %>
+
+  <%= level_form.label :inclusions %>
+  <%= level_form.text_area :inclusions, placeholder: 'Inclusions' %>
+
+  <%= level_form.label :duration %>
+  <%= level_form.number_field :duration, placeholder: 'Duration (In hours)' %>
+
+  <%= level_form.label :sessions %>
+  <%= level_form.number_field :sessions, placeholder: 'Total no. of Sessions' %>
+
+  <%= level_form.label :session_duration %>
+  <%= level_form.number_field :session_duration, placeholder: 'Single Session Duration (In minutes)' %>
+
+  <%= level_form.label :active %>
+  <%= level_form.check_box :active %>
+  <p class="alert-text">This will show/hide this course level from the provider's course listing</p>
+
+  <%= level_form.label :has_batches %>
+  <%= level_form.check_box :has_batches %>
+  <p class="alert-text">If adding the batches for the first time, first save the current changes and then come back to edit.</p>
+
+  <% if level_form.object.has_batches? %>
+    <%= render partial: 'batch_form', locals: { level_form: level_form } %>
+  <% end %>
+
+  <%= level_form.link_to_remove "Remove this course level" %>
+<% end %>
+<p><%= provider_form.link_to_add "Add a course level", :course_levels %></p>

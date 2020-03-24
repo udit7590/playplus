@@ -1,0 +1,25 @@
+---
+development:
+  cloud_name: dsnid5osz
+  api_key: '648899337494431'
+  api_secret: Hl6iUVofm0IJ948oW9ss6ck4kP4
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dsnid5osz
+  api_key: '648899337494431'
+  api_secret: Hl6iUVofm0IJ948oW9ss6ck4kP4
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dsnid5osz
+  api_key: '648899337494431'
+  api_secret: Hl6iUVofm0IJ948oW9ss6ck4kP4
+  enhance_image_tag: true
+  static_image_support: false
+staging:
+  cloud_name: dsnid5osz
+  api_key: '648899337494431'
+  api_secret: Hl6iUVofm0IJ948oW9ss6ck4kP4
+  enhance_image_tag: true
+  static_image_support: false

@@ -1,0 +1,52 @@
+<!-- User Enrollments -->
+  <div class="contact">
+    <div class="container">
+      <div class="contact-heading">
+          <h2 class="wow fadeInDown animated" data-wow-delay=".5s">My Enrollments</h2>
+          <p class="wow fadeInUp animated" data-wow-delay=".5s">Here is the list of your course enrollments with their details.</p>
+        </div>
+      <div class="map wow fadeInUp animated" data-wow-delay=".5s">
+        <% if @enrollments.blank? %>
+          <center><h3>You have not enrolled for any course yet. Goto our <a href="<%= courses_path %>">course index page</a> to enroll in one now!</h3></center>
+        <% else %>
+          <div class="jumbotron">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover table-striped">
+                <thead class="thead-inverse">
+                  <tr class="table-info">
+                    <th>#</th>
+                    <th>Course</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Price</th>
+                    <th>Status
+                      <button type="button" class="btn btn-sm btn-info" <%= tooltip(states_help, :top, true) %>>?</button>
+                    </th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @enrollments.each_with_index do |enrollment, index| %>
+                    <tr>
+                      <td scope="row"><%= index+1 %></td>
+                      <td><%= enrollment.course.name.humanize %></td>
+                      <td><%= enrollment.course_batch.start_date.to_date.to_s(:long) %></td>
+                      <td><%= enrollment.course_batch.end_date.to_date.to_s(:long) %></td>
+                      <td><%= enrollment.course_batch.course_level.price_display %></td>
+                      <td><%= enrollment.state_name %></td>
+                      <td>
+                        <%= link_to user_enrollment_path(current_user, enrollment) do %>
+                          <button class="btn btn-primary">Show</button>
+                        <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<!-- User Enrollments -->

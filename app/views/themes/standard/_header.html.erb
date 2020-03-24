@@ -1,0 +1,79 @@
+<div class="header">
+  <div class="top-header">
+    <div class="container">
+      <div class="top-header-info">
+        <div class="top-header-left wow fadeInLeft animated" data-wow-delay=".5s">
+          <p>We bring you the courses that brings the best in you.</p>
+        </div>
+        <div class="top-header-right wow fadeInRight animated" data-wow-delay=".5s">
+          <div class="top-header-right-info">
+            <ul>
+              <% if current_user.present? %>
+                <li><%= link_to "Logout", destroy_user_session_path, method: :delete %><br /></li>
+              <% else %>
+                <%- if controller_name != 'sessions' %>
+                  <li><%= link_to "Login", new_session_path(:user) %><br /></li>
+                <% end -%>
+
+                <%- if controller_name != 'registrations' %>
+                  <li><%= link_to "Sign up", new_registration_path(:user) %></li>
+                <% end -%>
+              <% end %>
+            </ul>
+          </div>
+          <div class="social-icons">
+            <ul>
+              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="twitter facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="twitter google" href="#"><i class="fa fa-google-plus"></i></a></li>
+            </ul>
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+        <div class="clearfix"> </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-header">
+    <div class="container">
+      <div class="logo wow fadeInDown animated" data-wow-delay=".5s">
+        <h1><a href="index.html"><%= image_tag SITE_CONFIG[:logo] %></a></h1>
+      </div>
+      <div class="top-nav wow fadeInRight animated" data-wow-delay=".5s">
+        <nav class="navbar navbar-default">
+          <div class="container">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Menu           
+            </button>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><%= nav_link 'Home', root_path %></li>
+              <li><%= nav_link 'About', about_path %></li>
+              <li><%= nav_link 'Courses', courses_path %></li>
+              <% in_admin_context do %>
+                <li><a href="#" class="dropdown-toggle hvr-bounce-to-bottom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><%= nav_link 'Add new course', new_admin_course_path, class: "hvr-bounce-to-bottom" %></li>
+                    <li><%= nav_link 'See all courses', admin_courses_path, class: "hvr-bounce-to-bottom" %></li>
+                  </ul>
+                </li> 
+              <% end %>
+              <!-- <li><a href="blog.html">Blog</a></li> -->
+              <li><%= nav_link 'Contact', contact_path %></li>
+              <% in_any_user_context do %>
+                <li><a href="#" class="dropdown-toggle hvr-bounce-to-bottom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><%= nav_link 'Preferences', edit_user_preferences_path(current_user), class: "hvr-bounce-to-bottom" %></li>
+                    <li><%= nav_link 'Enrollments', user_enrollments_path(current_user), class: "hvr-bounce-to-bottom" %></li>
+                  </ul>
+                </li> 
+              <% end %>
+            </ul> 
+            <div class="clearfix"> </div>
+          </div>  
+        </nav>    
+      </div>
+    </div>
+  </div>
+</div>

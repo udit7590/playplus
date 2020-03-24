@@ -1,0 +1,45 @@
+<div class="footer">
+  <div class="container">
+    <div class="footer-grids">
+      <div class="col-md-3 footer-nav wow fadeInLeft animated" data-wow-delay=".5s">
+        <h4>Navigation</h4>
+        <ul>
+          <li><%= link_to 'About', about_path %></li>
+          <li><%= link_to 'Courses', courses_path %></li>
+          <li><%= link_to 'Privacy Policy', privacy_policy_path %></li>
+          <li><%= link_to 'Terms & Conditions', terms_and_conditions_path %></li>
+          <li><%= link_to 'Contact', contact_path %></li>
+        </ul>
+      </div>
+      <div class="col-md-5 footer-nav wow fadeInUp animated" data-wow-delay=".5s">
+        <!-- TODO: Do something when current_user present and already subscribed to newsletter -->
+        <h4>Newsletter</h4>
+        <% if (current_user.present? && current_user.subscribed_to_newsletter?) || (current_user.blank? && session[:subscribed_to_newsletter]) %>
+          <p>You are subscribed to our newsletter and will receive latest news and info related to us and your favorite courses.</p>
+        <% else %>
+          <p>You can subscribe to our newsletter to receive latest news and info related to us and your favorite courses.</p>
+          <%= form_for(Newsletter.new, url: newsletters_path, method: :post) do |f| %>
+            <% if current_user.blank? %>
+              <%= f.email_field :email, placeholder: "Enter your email here" %>
+            <% end %>
+            <input type="submit" value="Subscribe">
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-md-4 footer-nav wow fadeInRight animated" data-wow-delay=".5s">
+        <h4>Latest Courses Added</h4>
+        <div class="news-grids">
+          <div class="news-grid">
+            <% Course.active.recent.limit(6).each do |course| %>
+              <h6 <%= tooltip(course.description) %>><%= course.name %> <%= link_to course.description.truncate(30), course_path(course) %></h6>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"> </div>
+    </div>
+    <div class="copyright wow fadeInUp animated" data-wow-delay=".5s">
+      <p>© 2016 ZuluPlus. All Rights Reserved.</p>
+    </div>
+  </div>
+</div>
