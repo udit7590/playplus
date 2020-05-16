@@ -31,7 +31,7 @@ gem "nested_form", '~> 0.3'
 gem 'kaminari', '~> 0.16'
 
 # For omniauth
-gem 'omniauth', '~> 1.3'
+gem 'omniauth', '~> 1.9'
 gem 'omniauth-facebook', '~> 3.0'
 
 # For Facebook graph api
