@@ -22,7 +22,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'devise', '~> 3.5.2'
+gem 'devise', '~> 4.7.1'
 gem 'cancancan', '~> 1.13.1'
 
 gem "nested_form", '~> 0.3'
