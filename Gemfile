@@ -28,7 +28,7 @@ gem 'cancancan', '~> 1.13.1'
 gem "nested_form", '~> 0.3'
 
 # For Pagination
-gem 'kaminari', '~> 0.16'
+gem 'kaminari', '~> 1.2'
 
 # For omniauth
 gem 'omniauth', '~> 1.9'
